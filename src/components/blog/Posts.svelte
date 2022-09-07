@@ -48,7 +48,7 @@
   <div class="container px-4 mx-auto">
     <div class="md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
       <span
-        class="inline-block py-px px-2 mb-4 text-xs leading-5 text-primary bg-green-100 font-medium uppercase rounded-full shadow-sm"
+        class="inline-block py-px px-2 mb-4 text-xs leading-5 text-primary bg-primary bg-opacity-10 font-medium uppercase rounded-full shadow-sm"
         >Blog</span
       >
       <h3
@@ -78,8 +78,8 @@
         <li class="w-full md:w-auto px-2">
           <button
             class={`${
-              tagIndex === i ? "bg-green-100 text-primary" : "text-gray-400"
-            } inline-block w-full py-2 px-4 my-4 md:mb-0 text-sm hover:text-primary hover:bg-green-200 font-bold rounded-md hover:shadow-sm`}
+              tagIndex === i ? "text-primary bg-primary-focus bg-opacity-20 shadow-sm" : "text-neutral bg-opacity-10"
+            } inline-block w-full py-2 px-4 my-4 md:mb-0 text-sm hover:text-primary bg-primary font-bold rounded-md hover:shadow-md hover:bg-opacity-20 transition`}
             on:click={() => {
               tagIndex = i;
             }}>{tag.toUpperCase()}</button
@@ -101,7 +101,7 @@
             <div class="mb-4">
               {#each post.frontmatter.tags as tag}
               <button
-                class="inline-block py-1 px-3 text-xs leading-5 text-primary hover:text-primary-focus font-medium uppercase bg-green-100 hover:bg-green-200 rounded-full shadow-sm mr-2"
+                class="inline-block py-1 px-3 text-xs leading-5 text-primary hover:text-primary-focus font-medium uppercase bg-primary bg-opacity-10 hover:bg-opacity-20 rounded-full shadow-sm mr-2"
                 on:click={() => {
                   tagIndex = tags.indexOf(tag)
                 }}>{tag}</button
