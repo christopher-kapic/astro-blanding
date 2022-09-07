@@ -23,10 +23,6 @@ export const config = {
       href: "/",
     },
     {
-      title: "About",
-      href: "/about",
-    },
-    {
       title: "Blog",
       href: "/blog",
     },
@@ -37,20 +33,8 @@ export const config = {
       href: "/",
     },
     {
-      title: "About",
-      href: "/about",
-    },
-    {
       title: "Blog",
       href: "/blog",
     },
-    {
-      title: "Privacy",
-      href: "/privacy"
-    },
-    {
-      title: "Terms",
-      href: "/terms"
-    }
   ]
 };
