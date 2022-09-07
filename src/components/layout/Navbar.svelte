@@ -14,7 +14,7 @@
 
 <section class="bg-white">
   <nav class="flex justify-between p-6 px-4">
-    <a href={logoHref} class="flex items-center">
+    <a href={logoHref} class="flex items-center" rel="prefetch">
       <img class="h-8 mr-2" src={logo} alt={`${title} logo`} />
       <span
         class="text-neutral font-extrabold text-2xl hover:text-neutral-focus transition hover:underline decoration-primary"
@@ -27,14 +27,16 @@
           <li class="mr-12">
             <a
               class="text-neutral hover:text-neutral-focus transition decoration-primary hover:underline font-medium"
-              href={page.href}>{page.title}</a
+              href={page.href}
+              rel="prefetch"
+              >{page.title}</a
             >
           </li>
         {/each}
       </ul>
       <a
         class="inline-block py-2 px-4 text-sm leading-5 transition text-primary-content hover:text-primary-content bg-primary hover:bg-primary-focus font-medium focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 rounded-md"
-        href="/contact">Contact Us</a
+        href="/contact" rel="prefetch">Contact Us</a
       >
     </div>
     <button
@@ -78,7 +80,7 @@
       <nav class="relative p-6 h-full overflow-y-auto">
         <div class="flex flex-col justify-between h-full">
           <div>
-            <a class="inline-block mb-6 flex items-center" href="#">
+            <a class="inline-block mb-6 flex items-center" href="/">
               <img class="h-8 mr-2" src={logo} alt={`${title} logo`} />
               <span
                 class="text-neutral font-extrabold text-2xl hover:text-neutral-focus transition hover:underline decoration-primary"

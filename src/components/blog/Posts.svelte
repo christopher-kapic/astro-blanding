@@ -91,11 +91,11 @@
       {#each posts as post}
         {#if tagIndex === 0 || post.frontmatter.tags.includes(tags[tagIndex])}
           <div class="w-full md:w-1/2 px-4 mb-8">
-            <a class="block mb-6 overflow-hidden rounded-md" href={post.url}>
+            <a class="block mb-6 overflow-hidden rounded-md hover:shadow-lg transition" href={post.url}>
               <img
                 class="w-full aspect-video"
                 src={post.frontmatter.image}
-                alt=""
+                alt={`${post.frontmatter.title} Image`}
               />
             </a>
             <div class="mb-4">
