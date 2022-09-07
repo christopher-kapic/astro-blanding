@@ -10,16 +10,16 @@ const dateOptions: {month: 'short', day: 'numeric', year: 'numeric'} = {month: '
     <div class="container px-4 mx-auto">
       <div class="md:max-w-2xl mx-auto mb-12 text-center">
         <div class="flex items-center justify-center">
-          <p class="inline-block text-green-500 font-medium">{content.author}</p>
-          <span class="mx-1 text-green-500">•</span>
-          <p class="inline-block text-green-500 font-medium">{new Date(content.publishDate).toLocaleDateString('en-US', dateOptions)}</p>
+          <p class="inline-block text-primary font-medium">{content.author}</p>
+          <span class="mx-1 text-primary">•</span>
+          <p class="inline-block text-primary font-medium">{new Date(content.publishDate).toLocaleDateString('en-US', dateOptions)}</p>
         </div>
         <h2 class="mb-4 text-3xl md:text-5xl leading-tight text-darkgray-900 font-bold tracking-tighter">{content.title}</h2>
         <p class="mb-6 text-lg md:text-xl font-medium text-gray-500">{content.summary}</p>
         {
           content.tags.map((tag: string) => {
             return (
-              <div class="inline-block py-1 px-3 mx-1 text-xs leading-5 text-green-500 font-medium uppercase bg-green-100 rounded-full shadow-sm">{tag}</div>
+              <div class="inline-block py-1 px-3 mx-1 text-xs leading-5 text-primary font-medium uppercase bg-green-100 rounded-full shadow-sm">{tag}</div>
             )
           })
         }
