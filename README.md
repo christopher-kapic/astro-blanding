@@ -2,6 +2,9 @@
 
 Astro Blanding is the template with which I begin for my clients' websites.
 
+#### With a little time to meet the requirements of a client (less than a day):
+![Lighthouse Report - 99 97 100 100](public/github/lighthouse.png)
+
 ## Get up and running (basics, required)
 - Handle contact form in `src/pages/api/contact.ts`.
   - One way you can do this is with Slack:
