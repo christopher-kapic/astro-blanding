@@ -12,7 +12,8 @@
   "dependencies": {
     "astro": "^1.5.2",
     "astro-icon": "^0.7.3",
-    "daisyui": "^2.33.0"
+    "daisyui": "^2.33.0",
+    "node-html-to-image": "^3.2.4"
   },
   "devDependencies": {
     "@astrojs/partytown": "^1.0.1",

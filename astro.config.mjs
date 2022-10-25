@@ -9,5 +9,6 @@ import { config } from "./src/config";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), partytown(), svelte(), sitemap(), prefetch()],
-  site: config.site
+  site: config.site,
+  output: 'server'
 });
