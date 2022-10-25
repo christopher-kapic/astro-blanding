@@ -1,4 +1,5 @@
 <script lang="ts">
+  // I plan to deprecate this, but there are still bugs in the astro-icon provider.
   export let size = 24;
   export let icon: string;
 </script>
