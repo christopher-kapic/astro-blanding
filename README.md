@@ -30,19 +30,19 @@ Astro Blanding is the template with which I begin for my clients' websites.
 
 ## Features
 
-### Icons by [feathericons](https://feathericons.com/)
-
-To use an icon from Feather Icons, I have created a svelte component. It does not require any client-side JavaScript, so a `client:*` directive is not required. Furthermore, it does not use a CDN or an extra NPM package 🤠
+### Icons by [astro-icon](https://github.com/natemoo-re/astro-icon#readme)
 
 Example:
 ```astro
 ---
-import Icon from '@components/Icon.svelte';
+import { Icon } from 'astro-icon'
 ---
 
-<ExampleComponent>
-  <Icon size={18} icon="github"/>
-</ExampleComponent>
+<!-- Automatically fetches and inlines Material Design Icon's "account" SVG -->
+<Icon viewBox="2 2 20 20" width="18" height="18" pack="fe" name="github" />
+
+<!-- Should be this, but I think there are still some bugs in the provider -->
+<Icon pack="mdi" name="account" />
 ```
 
 ### Contact form

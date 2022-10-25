@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "astro": "^1.1.5",
+    "astro-icon": "^0.7.3",
     "daisyui": "^2.24.2"
   },
   "devDependencies": {
