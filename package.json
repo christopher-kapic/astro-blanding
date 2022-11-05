@@ -10,10 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.6.2",
+    "astro": "^1.6.3",
     "astro-icon": "^0.7.3",
+    "blurhash": "^2.0.4",
+    "canvas": "^2.10.2",
     "daisyui": "^2.38.0",
-    "node-html-to-image": "^3.2.4"
+    "node-html-to-image": "^3.2.4",
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
     "@astrojs/partytown": "^1.0.1",

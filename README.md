@@ -48,3 +48,13 @@ import { Icon } from 'astro-icon'
 ### Contact form
 
 Figuring out a contact form is annoying, so I have one preconfigured. You only need to handle what happens once the form is submitted. This is done in `src/pages/api/contact.ts`.
+
+### OG Image Generation and Image Optimization (with lazy-loading)
+
+Preconfigured API routes in the `src/pages/api/ab` directory (`ab` as an abbreviation for `astro-blanding`). Edit the HTML code in `src/pages/api/ab/og.ts` to generate custom OG images for your social links. Use the `Image` component from `@components/ab/Image.svelte` to have lazy-loaded images using [blurhash](https://blurha.sh/).
+
+The `<Image />` component is not perfect. Do not use it for first contentful paints, dynamically-sized images (eg: background images), or relative urls (you must use full urls).
+
+```astro
+  <Image src="http://localhost:3000/github/lighthouse.png" width="300" height="200" alt="Hi" client:only="svelte" />
+```

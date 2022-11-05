@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Image from "@components/ab/Image.svelte";
 ---
 
 <Layout title="Welcome to Kapic Software.">
@@ -11,6 +12,7 @@ import Layout from "@layouts/Layout.astro";
     xl:grid-cols-12 xl:mx-16
     ">
       <div class="bg-red-200 xl:col-span-3 py-4">Hi</div>
+      <Image src="/github/lighthouse.png" width="300" height="200" alt="Hi" client:only="svelte" />
     </section>
   </section>
 </Layout>
