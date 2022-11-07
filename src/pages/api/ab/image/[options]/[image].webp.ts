@@ -1,4 +1,5 @@
 import sharp from 'sharp'
+import { config } from 'src/config';
 // import fetch from 'isomorphic-unfetch';
 
 // Convert option in a string format to a key-value pair
@@ -18,8 +19,6 @@ const parseOptions = (options) => {
 };
 
 export async function get({response, params}: {response: Response, params: any}) {
-  const cacheMaxAge = 60 * 60 * 24 // 24 hours
-
   const { options, image } = params;
 
   // Would be nice to handle relative routes like `/github/lighthouse.png`
@@ -39,7 +38,7 @@ export async function get({response, params}: {response: Response, params: any})
 
   const headers = new Headers();
   headers.append('Content-Type', 'image/webp');
-  headers.append('Cache-Control', `public, max-age=${cacheMaxAge}`);
+  headers.append('Cache-Control', `public, max-age=${config.imageOptimization.cache.image.maxAge}, s-maxage=${config.imageOptimization.cache.image.sMaxAge}`);
 
   return {
     body: readStream.body.pipe(transform),

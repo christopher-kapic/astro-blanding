@@ -36,5 +36,21 @@ export const config = {
       title: "Blog",
       href: "/blog",
     },
-  ]
+  ],
+  imageOptimization: {
+    cache: {
+      image: {
+        sMaxAge: 86400,
+        maxAge: 86400,
+      },
+      preview: {
+        sMaxAge: 86400,
+        maxAge: 86400
+      },
+      og: {
+        sMaxAge: 86400,
+        maxAge: 86400
+      }
+    }
+  }
 };

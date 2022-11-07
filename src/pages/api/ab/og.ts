@@ -1,8 +1,7 @@
 import nodeHtmlToImage from "node-html-to-image";
+import { config } from "src/config";
 
 export async function get({request}: {request: Request}) {
-  const cacheMaxAge = 30 * 60; // 30 minutes
-
   const html = `
   <html>
     <body style="height: 100; width: 120;">
@@ -16,7 +15,7 @@ export async function get({request}: {request: Request}) {
   });
 
   let headers = new Headers()
-  headers.append('cache-control', `public, max-age=${cacheMaxAge}`)
+  headers.append('cache-control', `public, max-age=${config.imageOptimization.cache.og.maxAge}, s-maxage=${config.imageOptimization.cache.og.sMaxAge}`)
   headers.append('content-type', 'image/png')
 
   return {

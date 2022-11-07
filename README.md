@@ -53,6 +53,8 @@ Figuring out a contact form is annoying, so I have one preconfigured. You only n
 
 Preconfigured API routes in the `src/pages/api/ab` directory (`ab` as an abbreviation for `astro-blanding`). Edit the HTML code in `src/pages/api/ab/og.ts` to generate custom OG images for your social links. Use the `Image` component from `@ab/Image.svelte` to have lazy-loaded images using [blurhash](https://blurha.sh/).
 
+You can change default cache times for images and image previews in `src/config` in the `imageOptimization` property.
+
 The `<Image />` Svelte component is inspired by NextJS's [image component](https://nextjs.org/docs/api-reference/next/image).
 
 ```astro
@@ -74,3 +76,4 @@ import Image from "@ab/Image.svelte";
   - The parent element must assign `position: "relative"`, `position: "fixed"`, or `position: "absolute"` style
 - `style` - `string` - pass styles as a string, you may want to use this to set the [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS property.
 - `className` - `string` - pass HTML `class` via string
+- `preview` - `string` - Blurhash preview (will speed up image preview, eg: if you save the preview in your database)

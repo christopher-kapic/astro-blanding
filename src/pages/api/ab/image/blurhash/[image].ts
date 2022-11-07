@@ -1,5 +1,6 @@
 import { encode } from "blurhash";
 import { createCanvas, loadImage, Image } from 'canvas'
+import { config } from 'src/config'
 
 const getImageData = (image: Image) => {
   const canvas = createCanvas(image.width, image.height)
@@ -8,7 +9,7 @@ const getImageData = (image: Image) => {
   return context.getImageData(0, 0, image.width, image.height)
 }
 
-// Open source help requested: use sharp instead of canvas
+// Open-source help requested: use sharp instead of canvas
 // import sharp from 'sharp';
 
 // const encodeImageToBlurhash = (path: string): Promise<string> =>
@@ -24,8 +25,6 @@ const getImageData = (image: Image) => {
 //   });
 
 export async function get({response, params}: {response: Response, params: any}) {
-  const cacheMaxAge = 60 * 60 * 24 // 24 hours
-
   const { image } = params;
 
   // Would be nice to handle relative routes like `/github/lighthouse.png`
@@ -48,7 +47,7 @@ export async function get({response, params}: {response: Response, params: any})
     status: 200,
     headers: {
       "Content-Type": "application/json",
-      "Cache-Control": `public, max-age=${cacheMaxAge}`
+      "Cache-Control": `public, max-age=${config.imageOptimization.cache.preview.maxAge}, s-maxage=${config.imageOptimization.cache.preview.sMaxAge}`
     }
   });
 }

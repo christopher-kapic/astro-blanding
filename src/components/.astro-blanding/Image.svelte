@@ -14,6 +14,7 @@
   export let priority: boolean = false;
   export let style: string = "";
   export let className: string = "";
+  export let preview: string | null;
 
   let canvas: HTMLCanvasElement;
 
@@ -24,16 +25,26 @@
   }
 
   onMount(async () => {
-    const res = await fetch(
-      `/api/ab/image/blurhash/${encodeURIComponent(fullSrc)}`
-    );
-    const json = await res.json();
+    if (!preview) {
+      const res = await fetch(
+        `/api/ab/image/blurhash/${encodeURIComponent(fullSrc)}`
+      );
+      const json = await res.json();
 
-    const pixels = decode(json.blurhash, Number(width), Number(height));
-    const ctx = canvas.getContext("2d");
-    const imageData = ctx!.createImageData(Number(width), Number(height));
-    imageData.data.set(pixels);
-    ctx!.putImageData(imageData, 0, 0);
+      console.log(w)
+
+      const pixels = decode(json.blurhash, Number(w), Number(h));
+      const ctx = canvas.getContext("2d");
+      const imageData = ctx!.createImageData(Number(w), Number(h));
+      imageData.data.set(pixels);
+      ctx!.putImageData(imageData, 0, 0);
+    } else {
+      const pixels = decode(preview, Number(w), Number(h));
+      const ctx = canvas.getContext("2d");
+      const imageData = ctx!.createImageData(Number(w), Number(h));
+      imageData.data.set(pixels);
+      ctx!.putImageData(imageData, 0, 0);
+    }
 
     return () => {};
   });
