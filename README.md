@@ -76,4 +76,4 @@ import Image from "@ab/Image.svelte";
   - The parent element must assign `position: "relative"`, `position: "fixed"`, or `position: "absolute"` style
 - `style` - `string` - pass styles as a string, you may want to use this to set the [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS property.
 - `className` - `string` - pass HTML `class` via string
-- `preview` - `string` - Blurhash preview (will speed up image preview, eg: if you save the preview in your database)
+- `preview` - `string` - Blurhash preview (will speed up image preview, eg: if you save the preview in your database) - _Not working at the moment_

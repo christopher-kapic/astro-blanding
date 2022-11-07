@@ -7,14 +7,14 @@
   let w: number;
   let h: number;
   export let src: string;
-  export let height: number | string | null;
-  export let width: number | string | null;
+  export let height: number | string | undefined = undefined;
+  export let width: number | string | undefined = undefined;
   export let alt: string;
   export let fill: boolean = false;
   export let priority: boolean = false;
   export let style: string = "";
   export let className: string = "";
-  export let preview: string | null;
+  export let preview: string | undefined = undefined;
 
   let canvas: HTMLCanvasElement;
 
@@ -24,7 +24,11 @@
   }
 
   if (src === "src") {
-    console.error(`Got src="src" in <Image />. Are you sure you didn't mean src={src}?`)
+    console.error(`Got src="src" in <Image />. Are you sure you didn't mean src={src}?`);
+  }
+
+  if ((!fill && !height) || (!fill && !width)) {
+    console.error("Fill is not set, expecting `fill` or `width` and `height` props in <Image />");
   }
 
   onMount(async () => {
@@ -40,6 +44,7 @@
       imageData.data.set(pixels);
       ctx!.putImageData(imageData, 0, 0);
     } else {
+      // Not working
       const pixels = decode(preview, Number(w), Number(h));
       const ctx = canvas.getContext("2d");
       const imageData = ctx!.createImageData(Number(w), Number(h));
