@@ -41,8 +41,6 @@ export async function get({response, params}: {response: Response, params: any})
     4
   )
 
-  console.log(blurhash)
-
   return new Response(JSON.stringify({blurhash: blurhash}), {
     status: 200,
     headers: {

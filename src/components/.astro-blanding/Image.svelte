@@ -19,9 +19,12 @@
   let canvas: HTMLCanvasElement;
 
   let fullSrc: string = src;
-  console.log(src);
   if (src[0] === "/") {
     fullSrc = url + src;
+  }
+
+  if (src === "src") {
+    console.error(`Got src="src" in <Image />. Are you sure you didn't mean src={src}?`)
   }
 
   onMount(async () => {
@@ -30,8 +33,6 @@
         `/api/ab/image/blurhash/${encodeURIComponent(fullSrc)}`
       );
       const json = await res.json();
-
-      console.log(w)
 
       const pixels = decode(json.blurhash, Number(w), Number(h));
       const ctx = canvas.getContext("2d");
