@@ -9,5 +9,5 @@ export async function post({request}: {request: Request}) {
   //   email: "christopher@example.com",
   //   message: "Hi, I'd like to buy your product!"
   // }
-  return Response.redirect(`${url}contact`, 307)
+  return Response.redirect(`${url}/contact`, 307)
 }

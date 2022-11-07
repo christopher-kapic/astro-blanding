@@ -20,7 +20,7 @@ Astro Blanding is the template with which I begin for my clients' websites.
         text: `${body.email} just requested a consultation for a website.\n${body.message.replace("+", " ")}`
       })
     })
-    return Response.redirect(`${url}success`, 307) // Note that this requires that you create a form success `/success` route.
+    return Response.redirect(`${url}/success`, 307) // Note that this requires that you create a form success `/success` route.
   }
   ```
 - Update information config in `src/config.ts`
@@ -49,12 +49,28 @@ import { Icon } from 'astro-icon'
 
 Figuring out a contact form is annoying, so I have one preconfigured. You only need to handle what happens once the form is submitted. This is done in `src/pages/api/contact.ts`.
 
-### OG Image Generation and Image Optimization (with lazy-loading)
+### OG Image Generation and Image Optimization (with lazy-loading) with Svelte component
 
-Preconfigured API routes in the `src/pages/api/ab` directory (`ab` as an abbreviation for `astro-blanding`). Edit the HTML code in `src/pages/api/ab/og.ts` to generate custom OG images for your social links. Use the `Image` component from `@components/ab/Image.svelte` to have lazy-loaded images using [blurhash](https://blurha.sh/).
+Preconfigured API routes in the `src/pages/api/ab` directory (`ab` as an abbreviation for `astro-blanding`). Edit the HTML code in `src/pages/api/ab/og.ts` to generate custom OG images for your social links. Use the `Image` component from `@ab/Image.svelte` to have lazy-loaded images using [blurhash](https://blurha.sh/).
 
-The `<Image />` component is not perfect. Do not use it for first contentful paints, dynamically-sized images (eg: background images), or relative urls (you must use full urls).
+The `<Image />` Svelte component is inspired by NextJS's [image component](https://nextjs.org/docs/api-reference/next/image).
 
 ```astro
-  <Image src="http://localhost:3000/github/lighthouse.png" width="300" height="200" alt="Hi" client:only="svelte" />
+---
+import Image from "@ab/Image.svelte";
+---
+
+<Image src="/github/lighthouse.png" width="300" height="200" alt="lighthouse scores" client:only="svelte" />
 ```
+
+`<Image />` props
+
+- `src` - _required_, `string` - a full or relative URL
+  - eg: `https://github.com/an/image.png`, `/github/lighthouse.png`
+- `width` - `number` - width of the image in pixels, _required_ unless `fill` prop is used
+- `height` - `number` - height of the image in pixels, _required_ unless `fill` prop is used
+- `alt` - _required_, `string` - used to describe the image for screen readers and search engines, if the image is purely decorative or not intended for the user, the alt property should be an empty string (eg: `alt=""`)
+- `fill` - default: `false` - a boolean that causes the image to fill the parent element
+  - The parent element must assign `position: "relative"`, `position: "fixed"`, or `position: "absolute"` style
+- `style` - `string` - pass styles as a string, you may want to use this to set the [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) CSS property.
+- `className` - `string` - pass HTML `class` via string
