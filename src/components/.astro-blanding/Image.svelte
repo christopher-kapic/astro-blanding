@@ -6,6 +6,7 @@
 
   let w: number;
   let h: number;
+  export let quality: number = 80;
   export let src: string;
   export let height: number | string | undefined = undefined;
   export let width: number | string | undefined = undefined;
@@ -32,25 +33,25 @@
   }
 
   onMount(async () => {
+    let blurhash: any;
     if (!preview) {
       const res = await fetch(
         `/api/ab/image/blurhash/${encodeURIComponent(fullSrc)}`
       );
       const json = await res.json();
-
-      const pixels = decode(json.blurhash, Number(w), Number(h));
-      const ctx = canvas.getContext("2d");
-      const imageData = ctx!.createImageData(Number(w), Number(h));
-      imageData.data.set(pixels);
-      ctx!.putImageData(imageData, 0, 0);
+      blurhash = json.blurhash;
     } else {
-      // Not working
-      const pixels = decode(preview, Number(w), Number(h));
-      const ctx = canvas.getContext("2d");
-      const imageData = ctx!.createImageData(Number(w), Number(h));
-      imageData.data.set(pixels);
-      ctx!.putImageData(imageData, 0, 0);
+      const wrapper = async () => {
+        return preview
+      }
+      blurhash = await wrapper(); // Is there a way to do this without a wrapper?
     }
+
+    const pixels = decode(blurhash, Number(w), Number(h));
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx!.createImageData(Number(w), Number(h));
+    imageData.data.set(pixels);
+    ctx!.putImageData(imageData, 0, 0);
 
     return () => {};
   });
@@ -70,7 +71,7 @@
     width={w}
     src={`/api/ab/image/w=${width ? width : w}&h=${
       height ? height : h
-    }/${encodeURIComponent(fullSrc)}.webp`}
+    }&q=${quality}/${encodeURIComponent(fullSrc)}.webp`}
     loading={priority ? "eager" : "lazy"}
     style={style}
     class={className}
