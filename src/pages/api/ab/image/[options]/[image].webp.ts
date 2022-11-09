@@ -5,14 +5,14 @@ import { config } from 'src/config';
 // Convert option in a string format to a key-value pair
 // key=value   { [key]: value }
 // key         { [key]: true }
-const optionToKeyVal = (option) =>
+const optionToKeyVal = (option: string) =>
   ((split) =>
     split.length > 0
       ? { [split[0]]: split.length > 1 ? split[1] : true }
       : undefined)(option.split('='));
 
 // Parse options string and return options object
-const parseOptions = (options) => {
+const parseOptions = (options: string) => {
   return options
     .split('&')
     .reduce((acc, option) => ({ ...acc, ...optionToKeyVal(option) }), {});
