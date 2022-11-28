@@ -1,12 +1,12 @@
 import { encode } from "blurhash";
-import { createCanvas, loadImage, Image } from 'canvas'
+// import { createCanvas, loadImage, Image } from 'canvas'
 import { config } from 'src/config'
 
 const getImageData = (image: Image) => {
-  const canvas = createCanvas(image.width, image.height)
-  const context = canvas.getContext('2d')
-  context.drawImage(image, 0, 0)
-  return context.getImageData(0, 0, image.width, image.height)
+  // const canvas = createCanvas(image.width, image.height)
+  // const context = canvas.getContext('2d')
+  // context.drawImage(image, 0, 0)
+  // return context.getImageData(0, 0, image.width, image.height)
 }
 
 // Open-source help requested: use sharp instead of canvas
@@ -31,17 +31,17 @@ export async function get({response, params}: {response: Response, params: any})
   // instead of `http://localhost:3000/github/lighthouse.png`
   const decodedUrl = decodeURIComponent(image);
 
-  const decodedImage = await loadImage(decodedUrl)
-  const imageData = getImageData(decodedImage)
-  const blurhash = encode(
-    imageData.data,
-    imageData.width,
-    imageData.height,
-    4,
-    4
-  )
+  // const decodedImage = await loadImage(decodedUrl)
+  // const imageData = getImageData(decodedImage)
+  // const blurhash = encode(
+  //   imageData.data,
+  //   imageData.width,
+  //   imageData.height,
+  //   4,
+  //   4
+  // )
 
-  return new Response(JSON.stringify({blurhash: blurhash}), {
+  return new Response(JSON.stringify({blurhash: "incomplete - cannot use canvas npm package"}), {
     status: 200,
     headers: {
       "Content-Type": "application/json",
