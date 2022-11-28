@@ -18,13 +18,13 @@
     "sharp": "^0.31.2"
   },
   "devDependencies": {
-    "@astrojs/partytown": "^1.0.1",
+    "@astrojs/partytown": "^1.0.2",
     "@astrojs/prefetch": "^0.0.7",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/svelte": "^1.0.2",
     "@astrojs/tailwind": "^1.0.1",
-    "@tailwindcss/typography": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.8",
     "@types/sharp": "^0.31.0",
-    "svelte": "^3.52.0"
+    "svelte": "^3.53.1"
   }
 }
