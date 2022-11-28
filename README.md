@@ -24,6 +24,7 @@ Astro Blanding is the template with which I begin for my clients' websites.
   }
   ```
 - Update information config in `src/config.ts`
+- Update site in astro config in `astro.config.mjs`
 - Deploy to Netlify (using NetlifyCMS) or another provider (you have to install your provider, _even Netlify_).
   - This requires that you add [Netlify](https://docs.astro.build/en/guides/integrations-guide/netlify/)
   `npx astro add netlify`
