@@ -25,7 +25,6 @@ export async function get({response, params}: {response: Response, params: any})
   // instead of `http://localhost:3000/github/lighthouse.png`
   const decodedUrl = decodeURIComponent(image);
   const parsedOptions = parseOptions(options);
-  console.log(parsedOptions.q)
 
   const readStream = await fetch(decodedUrl);
 

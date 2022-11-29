@@ -3,7 +3,6 @@
   import { onMount } from "svelte";
   import { url } from "@utils/GetURL";
 
-
   let w: number;
   let h: number;
   export let quality: number = 80;
