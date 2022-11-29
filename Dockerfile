@@ -7,11 +7,13 @@ COPY package*.json ./
 # RUN npm ci --only=production
 RUN npm install
 
+COPY . .
+
 RUN npx astro add node -y
 
-RUN sed -i '' 's/node()/node({mode: "standalone"})/' astro.config.mjs
+RUN sed -i 's/node()/node({mode: "standalone"})/' astro.config.mjs
 
-COPY . .
+RUN npm run build
 
 EXPOSE 3000
 
