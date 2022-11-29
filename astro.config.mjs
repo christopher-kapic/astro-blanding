@@ -6,14 +6,8 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
-import node from "@astrojs/node";
-
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), partytown(), svelte(), sitemap(), prefetch()],
   site: 'https://kapicsoftware.com',
   output: 'server',
-  adapter: node({
-    mode: 'standalone'
-  })
 });
