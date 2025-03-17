@@ -1,0 +1,21 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Image from "@ab/Image.svelte";
+---
+
+<Layout title="Welcome to Kapic Software.">
+  <section class="w-screen flex justify-center">
+    <section class="
+    grid w-full gap-2 max-w-screen-xl
+    grid-cols-4 mx-4
+    sm:grid-cols-8 sm:mx-12
+    xl:grid-cols-12 xl:mx-16
+    ">
+      <div class="bg-red-200 xl:col-span-3 py-4">Hi</div>
+    </section>
+  </section>
+  <Image src="/github/lighthouse.png" width="300" height="200" alt="Hi" client:only="svelte" />
+  <div style="height: 300px; width: 600px; position: relative;">
+    <Image src="/github/lighthouse.png" fill client:only="svelte" alt="" />
+  </div>
+</Layout>
